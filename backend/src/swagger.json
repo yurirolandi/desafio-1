@@ -1,0 +1,166 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de manipulação de Insights",
+    "description": "Essa API tem como objetivo criar, editar, atualizar e deletar um card insights",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333/",
+      "description": "API de Homologação"
+    }
+  ],
+  "paths": {
+    "/api": {
+      "get": {
+        "summary": "Lista de cards Insights",
+        "description": "Essa rota será responsavel por lista os cards insights",
+        "tags": [
+          "Insights"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#components/schemas/insights"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Criação de um cards Insights",
+        "description": "Essa rota será responsavel por criar os cards insights",
+        "tags": [
+          "Insights"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/insights"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Update/{id}": {
+      "put": {
+        "summary": "Atualização de um cards Insights",
+        "description": "Essa rota será responsavel por atualizar os cards insights",
+        "tags": [
+          "Insights"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/insights"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#components/schemas/insights"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Delete/{id}": {
+      "delete": {
+        "summary": "Delete de cards Insights",
+        "description": "Essa rota será responsavel por deletar os cards insights",
+        "tags": [
+          "Insights"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#components/schemas/insights"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/findtag": {
+      "post": {
+        "summary": "Busca de card por Tags",
+        "description": "Essa rota será responsavel por buscar os cards insights por tags",
+        "tags": [
+          "Insights"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/insightsTags"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#components/schemas/insights"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "insights": {
+        "type": "object",
+        "properties": {
+          "texto": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "insightsTags": {
+        "type": "object",
+        "properties": {
+          "texto": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
