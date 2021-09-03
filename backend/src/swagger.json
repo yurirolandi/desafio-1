@@ -47,6 +47,19 @@
               }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#components/schemas/insights"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -56,6 +69,14 @@
         "description": "Essa rota será responsavel por atualizar os cards insights",
         "tags": [
           "Insights"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id do card",
+            "required": "true"
+          }
         ],
         "requestBody": {
           "content": {
@@ -87,6 +108,14 @@
         "description": "Essa rota será responsavel por deletar os cards insights",
         "tags": [
           "Insights"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id do card",
+            "required": "true"
+          }
         ],
         "responses": {
           "200": {
